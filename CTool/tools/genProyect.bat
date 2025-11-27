@@ -23,4 +23,7 @@ echo   Solucion generada dentro de /build
 echo   Archivo: PracticaSonidoGustavo.sln
 echo ==============================================
 
+cd ..
+cd ./tools
+
 pause

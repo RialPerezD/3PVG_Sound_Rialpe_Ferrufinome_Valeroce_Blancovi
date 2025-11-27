@@ -1,6 +1,6 @@
-^C:\DVD\PRACTICASONIDOGUSTAVO\CTOOL\BUILD\CMAKEFILES\60A32B8EAAAD3AB60F3648F779BDFF5D\GENERATE.STAMP.RULE
+^D:\CLASE\PRACTICASONIDOGUSTAVO\CTOOL\BUILD\CMAKEFILES\8420638A006C2970F1EDC141E2C4E413\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Dvd/PracticaSonidoGustavo/CTool -BC:/Dvd/PracticaSonidoGustavo/CTool/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Dvd/PracticaSonidoGustavo/CTool/build/PracticaSonidoGustavo.sln
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Clase/PracticaSonidoGustavo/CTool -BD:/Clase/PracticaSonidoGustavo/CTool/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Clase/PracticaSonidoGustavo/CTool/build/GameGustavo.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
