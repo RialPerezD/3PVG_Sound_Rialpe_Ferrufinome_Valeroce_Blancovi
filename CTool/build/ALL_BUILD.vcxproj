@@ -69,7 +69,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -99,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -174,13 +174,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Clase\PracticaSonidoGustavo\CTool\build\Game.vcxproj">
-      <Project>{DA34E25C-8EBD-3884-8102-A5961A9FFB32}</Project>
-      <Name>Game</Name>
-    </ProjectReference>
     <ProjectReference Include="D:\Clase\PracticaSonidoGustavo\CTool\build\Tool.vcxproj">
       <Project>{0A608931-B1AC-3AF8-A655-4FF56BB17402}</Project>
       <Name>Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Clase\PracticaSonidoGustavo\CTool\build\imgui_backends.vcxproj">
+      <Project>{BBF2BEFB-2894-35FD-8E85-C6C0912AA6AC}</Project>
+      <Name>imgui_backends</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

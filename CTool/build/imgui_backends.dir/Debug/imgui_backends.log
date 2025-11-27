@@ -1,0 +1,5 @@
+﻿  Building Custom Rule D:/Clase/PracticaSonidoGustavo/CTool/CMakeLists.txt
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  Generating Code...
+  imgui_backends.vcxproj -> D:\Clase\PracticaSonidoGustavo\CTool\build\Debug\imgui_backends.lib

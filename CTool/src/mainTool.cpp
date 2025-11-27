@@ -1,57 +1,75 @@
-
-#include <stdio.h>
-
-#include <esat/window.h>
-#include <esat/draw.h>
-#include <esat/input.h>
-#include <esat/sprite.h>
-#include <esat/time.h>
-
-#include <loader.h>
-#include <drawableEntity.h>
-#include <sound.h>
-
-#include <cstdlib>
-#include <time.h>
+#include "imgui.h"
+#include "imnodes.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
 #include <iostream>
+#include "../deps/glfw/include/GLFW/glfw3.h"
 
-unsigned char fps = 64; //Control de frames por segundo
-double current_time, last_time;
+int main() {
+    if (!glfwInit()) return -1;
 
+    GLFWwindow* window = glfwCreateWindow(800, 600, "ImNodes Demo", nullptr, nullptr);
+    glfwMakeContextCurrent(window);
 
-// --- Sound Manager ---
-AudioManager audio;
-int backgroundMusic = -1;
-int nightMusic = -1;
-int tabernMusic = -1;
-bool outside = true;
-std::vector<int> enemyMusicIdList = {};
-// --- *** ---
+    // Crear contextos
+    ImGui::CreateContext();
+    ImNodes::CreateContext();
 
+    // Inicializar backends
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 130");
 
+    ImNodes::StyleColorsDark();
 
-int esat::main(int argc, char** argv) {
-	srand(time(NULL));
-	esat::WindowInit(1024, 768);
+    int link_id = 1;
 
-	float dt = 0.125f;
+    while (!glfwWindowShouldClose(window)) {
+        glfwPollEvents();
 
-	while (esat::WindowIsOpened() && !esat::IsSpecialKeyDown(esat::kSpecialKey_Escape)) {
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
-		last_time = esat::Time();
-		esat::DrawBegin();
-		esat::DrawClear(0, 0, 0);
+        ImNodes::BeginNodeEditor();
 
+        // Nodo 1
+        ImNodes::BeginNode(1); // ID unico del nodo
+        ImNodes::BeginNodeTitleBar();
+        ImGui::Text("Nodo 1"); // Titulo del nodo
+        ImNodes::EndNodeTitleBar();
 
+        // Pin de entrada
+        ImNodes::BeginInputAttribute(2); 
+        ImGui::Text("Input");
+        ImNodes::EndInputAttribute();
 
-		esat::DrawEnd();
-		do {
-			current_time = esat::Time();
-		} while ((current_time - last_time) <= 1000.0 / fps);
-		esat::WindowFrame();
-	}
+        // Pin de salida
+        ImNodes::BeginOutputAttribute(3);
+        ImGui::Text("Output");
+        ImNodes::EndOutputAttribute();
 
-	audio.Close();
+        ImNodes::EndNode();
 
-	return 0;
+        ImNodes::EndNodeEditor();
+
+        ImGui::Render();
+        int display_w, display_h;
+        glfwGetFramebufferSize(window, &display_w, &display_h);
+        glViewport(0, 0, display_w, display_h);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        glfwSwapBuffers(window);
+    }
+
+    // Liberar contextos
+    ImNodes::DestroyContext();
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    return 0;
 }

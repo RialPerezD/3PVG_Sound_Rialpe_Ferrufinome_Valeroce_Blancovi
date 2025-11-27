@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -105,10 +105,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -128,7 +128,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\bin\win_x64\ESAT_d.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;Debug\imgui_internal.lib;Debug\imgui_backends.lib;Debug\imnodes_internal.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;Debug\imgui_internal.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -144,7 +144,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -164,10 +164,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -187,7 +187,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\bin\win_x64\ESAT_d.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;Release\imgui_internal.lib;Release\imgui_backends.lib;Release\imnodes_internal.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;Release\imgui_internal.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -203,7 +203,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -223,10 +223,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -246,7 +246,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\bin\win_x64\ESAT_d.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;MinSizeRel\imgui_internal.lib;MinSizeRel\imgui_backends.lib;MinSizeRel\imnodes_internal.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;MinSizeRel\imgui_internal.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -262,7 +262,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -281,10 +281,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Clase\PracticaSonidoGustavo\CTool\include;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui;D:\Clase\PracticaSonidoGustavo\CTool\deps\imgui\backends;D:\Clase\PracticaSonidoGustavo\CTool\deps\imnodes;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -304,7 +304,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\ESAT_rev248\bin\win_x64\ESAT_d.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Clase\PracticaSonidoGustavo\CTool\deps\OpenAL\libs\Win64\OpenAL32.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;Ws2_32.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;RelWithDebInfo\imgui_internal.lib;RelWithDebInfo\imgui_backends.lib;RelWithDebInfo\imnodes_internal.lib;D:\Clase\PracticaSonidoGustavo\CTool\deps\glfw\lib\glfw3.lib;RelWithDebInfo\imgui_internal.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -376,7 +376,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\Clase\PracticaSonidoGustavo\CTool\src\drawable.cpp" />
     <ClCompile Include="D:\Clase\PracticaSonidoGustavo\CTool\src\mainTool.cpp" />
     <ClCompile Include="D:\Clase\PracticaSonidoGustavo\CTool\src\sound.cpp" />
   </ItemGroup>
@@ -387,6 +386,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Clase\PracticaSonidoGustavo\CTool\build\imgui_backends.vcxproj">
+      <Project>{BBF2BEFB-2894-35FD-8E85-C6C0912AA6AC}</Project>
+      <Name>imgui_backends</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Clase\PracticaSonidoGustavo\CTool\build\imgui_internal.vcxproj">
+      <Project>{CC913A96-43CC-3F42-AAE0-F4AE0F1DBD45}</Project>
+      <Name>imgui_internal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Clase\PracticaSonidoGustavo\CTool\build\imnodes_internal.vcxproj">
+      <Project>{E11063EE-0B51-3ABD-AC97-43FC2B7E0AEC}</Project>
+      <Name>imnodes_internal</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
