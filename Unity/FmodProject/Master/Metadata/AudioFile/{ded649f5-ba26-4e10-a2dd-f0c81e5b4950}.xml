@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ded649f5-ba26-4e10-a2dd-f0c81e5b4950}">
+		<property name="assetPath">
+			<value>La clave esta en las metaforas.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>302.54399999999998</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{070b7de7-2445-4241-a989-b5a1948d8306}</destination>
+		</relationship>
+	</object>
+</objects>
