@@ -41,6 +41,7 @@ int stepAmmount = 32;
 int maxStepCounter = 8;
 int stepCounter = 3;
 Drawable player;
+bool hasLost = false;
 // --- *** ---
 
 // --- Day cicle data ---
@@ -73,6 +74,14 @@ Drawable LoadSprite(const char* route, float scaleX = 1.f, float scaleY = 1.f) {
 void UpdateEnemys() {
 	for (int i = 1; i < 5; i++) {
 		drawableList[i].MoveTowards(player.posX, player.posY, board);
+		audio.SetSourcePosition(i+2, drawableList[i].posX, drawableList[i].posY);
+
+		if (drawableList[i].posX == player.posX && drawableList[i].posY == player.posY) {
+			hasLost = true;
+			if (!isDay) {
+				isDay = true;
+			}
+		}
 	}
 }
 
@@ -90,8 +99,16 @@ void DrawSprites() {
 	player.transform.y = player.posY * tileSize;
 	esat::DrawSprite(player.sprite, player.transform);
 
+	esat::DrawSetTextSize(20);
+	esat::DrawSetFillColor(255, 255, 0);
 	sprintf(buffer, "Steps remain %d", stepAmmount);
 	esat::DrawText(24*tileSize, 20, buffer);
+
+	if (hasLost) {
+		esat::DrawSetTextSize(60);
+		esat::DrawSetFillColor(255, 255, 255);
+		esat::DrawText(18 * tileSize, 25 * tileSize, "You Lost");
+	}
 }
 
 
@@ -126,10 +143,18 @@ bool CanIMoveThere(int x, int y) {
 
 void CheckSpecialPlaces() {
 	if (player.posX == 25 && player.posY == 28 && outside) {
-		audio.Crossfade(backgroundMusic, tabernMusic, 2.5f);
+		if (isDay) {
+			audio.Crossfade(backgroundMusic, tabernMusic, 1.0f);
+		} else {
+			audio.Crossfade(nightMusic, tabernMusic, 1.0f);
+		}
 		outside = !outside;
 	} else if (player.posX == 25 && player.posY == 30 && !outside) {
-		audio.Crossfade(tabernMusic, backgroundMusic, 2.5f);
+		if (isDay) {
+			audio.Crossfade(tabernMusic, backgroundMusic, 1.0f);
+		} else {
+			audio.Crossfade(tabernMusic, nightMusic, 1.0f);
+		}
 		outside = !outside;
 	}
 }
@@ -158,7 +183,6 @@ void UpdateInput() {
 		if (!isDay && stepCounter <= 0) {
 			UpdateEnemys();
 
-			if(maxStepCounter > 1) maxStepCounter--;
 			stepCounter = maxStepCounter;
 		}
 		stepCounter--;
@@ -170,18 +194,20 @@ void ChangeDayCicle() {
 	stepAmmount = 32;
 
 	if (isDay) {
-		audio.Crossfade(backgroundMusic, nightMusic, 3.f);
+		audio.Crossfade(backgroundMusic, nightMusic, 1.5f);
 
 		for (int i = 0; i < 4; i++) {
 			audio.Play(enemyMusicIdList[i], true);
 		}
 	} else {
-		audio.Crossfade(nightMusic, backgroundMusic, 3.f);
+		audio.Crossfade(nightMusic, backgroundMusic, 1.5f);
 
 		for (int i = 0; i < 4; i++) {
 			audio.Stop(enemyMusicIdList[i]);
 		}
 	}
+
+	if (maxStepCounter > 1) maxStepCounter--;
 
 	isDay = !isDay;
 }
@@ -220,6 +246,7 @@ void InitBaseMusic() {
 	int bird = audio.LoadWav("../assets/bird.wav");
 	audio.Register2DSound(bird, 37, 22, 20.f);
 	audio.Play(bird, true);
+	audio.SetVolume(bird, 5.0f);
 
 	audio.Play(backgroundMusic, true);
 }
@@ -249,7 +276,9 @@ int esat::main(int argc, char** argv) {
 		audio.Update(dt);
 		audio.UpdateSpatial2D(player.posX, player.posY);
 
-		UpdateInput();
+		if (!hasLost) {
+			UpdateInput();
+		}
 
 		DrawSprites();
 
