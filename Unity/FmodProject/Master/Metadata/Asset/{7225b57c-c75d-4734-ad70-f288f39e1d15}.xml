@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{7225b57c-c75d-4734-ad70-f288f39e1d15}">
+		<property name="assetPath">
+			<value>Layering/Survivor - Eye Of The Tiger/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{070b7de7-2445-4241-a989-b5a1948d8306}</destination>
+		</relationship>
+	</object>
+</objects>

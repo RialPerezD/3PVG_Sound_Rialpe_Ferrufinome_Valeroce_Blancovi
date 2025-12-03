@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{a0e567d0-9f6e-41b4-be55-159152fc9428}">
+		<property name="name">
+			<value>RHYTHM_ON</value>
+		</property>
+		<relationship name="folder">
+			<destination>{56a6c60a-199f-4758-a053-a521835a12de}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ff6ae3e2-f6b5-42c1-a491-1a3d9d43e744}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ff6ae3e2-f6b5-42c1-a491-1a3d9d43e744}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
