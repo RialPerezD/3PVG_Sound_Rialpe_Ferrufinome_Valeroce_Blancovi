@@ -1,13 +1,14 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Conf")]
     public float speed = 5f;
     public float mousesens = 200f;
     public Transform camera;
-
-
+    
     private float Xrot = 0f;
     private CharacterController controller;
 
