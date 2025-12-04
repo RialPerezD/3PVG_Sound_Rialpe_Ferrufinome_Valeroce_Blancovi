@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{51a42582-d304-4ad4-a77b-8428a8e80b9c}">
 		<property name="name">
-			<value>Branching</value>
+			<value>TestBranching</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -31,9 +31,6 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{e7b93078-bbc8-4f48-87e1-e04c1c657d1d}</destination>
-		</relationship>
-		<relationship name="banks">
-			<destination>{e056ba29-a0ea-4b1d-b79f-fbe8aaf25e2a}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{d9d46bc5-326e-4b42-9a19-0bd0338658ef}">

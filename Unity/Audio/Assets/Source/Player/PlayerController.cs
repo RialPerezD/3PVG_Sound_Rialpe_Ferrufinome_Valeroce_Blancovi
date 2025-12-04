@@ -1,44 +1,42 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Conf")]
-    public float speed = 5f;
-    public float mousesens = 200f;
-    public Transform camera;
-    
-    private float Xrot = 0f;
-    private CharacterController controller;
+    [Header("Configuration")] public float speed = 5f;
+    public float sensitivity = 200f;
+    public new Transform camera;
+
+    private float _rotationX = 0f;
+    private CharacterController _controller;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        _controller = GetComponent<CharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    private void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mousesens * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mousesens * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
-        Xrot -= mouseY;
-        Xrot = Mathf.Clamp(Xrot, -90f, 90f);
+        _rotationX -= mouseY;
+        _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
 
-        camera.localRotation = Quaternion.Euler(Xrot, 0f, 0f);
+        camera.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
 
         transform.Rotate(Vector3.up * mouseX);
 
 
-        float x = Input.GetAxis("Horizontal"); 
-        float z = Input.GetAxis("Vertical");   
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
         Vector3 mover = transform.right * x + transform.forward * z;
 
-        controller.Move(mover * speed * Time.deltaTime);
+        _controller.Move(mover * (speed * Time.deltaTime));
 
-        controller.Move(Physics.gravity * Time.deltaTime);
+        _controller.Move(Physics.gravity * Time.deltaTime);
     }
 }

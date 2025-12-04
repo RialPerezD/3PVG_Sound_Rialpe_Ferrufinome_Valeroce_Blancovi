@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c8ac0d0e-61ae-4948-9bad-c0d3a066f347}">
+		<property name="assetPath">
+			<value>BranchingLitvar/branching_litvar_sad1.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{070b7de7-2445-4241-a989-b5a1948d8306}</destination>
+		</relationship>
+	</object>
+</objects>

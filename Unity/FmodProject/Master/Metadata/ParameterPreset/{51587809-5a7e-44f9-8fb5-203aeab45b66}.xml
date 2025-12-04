@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{51587809-5a7e-44f9-8fb5-203aeab45b66}">
+		<property name="name">
+			<value>LitvarState</value>
+		</property>
+		<relationship name="folder">
+			<destination>{56a6c60a-199f-4758-a053-a521835a12de}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7a38ec15-4f32-425a-90d1-f768c98a9ba6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7a38ec15-4f32-425a-90d1-f768c98a9ba6}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Sad</value>
+			<value>Epic</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

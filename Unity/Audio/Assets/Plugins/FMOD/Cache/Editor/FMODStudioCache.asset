@@ -204,32 +204,6 @@ MonoBehaviour:
   - Name: Desktop
     Value: 9576992
   Exists: 1
---- !u!114 &-1206982968729462525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Branching/State
-  m_EditorClassIdentifier: 
-  Name: State
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 303599099
-    data2: 3282050473
-  Type: 2
-  IsGlobal: 0
-  Labels:
-  - Exploration
-  - Combat
-  Exists: 1
 --- !u!114 &-891807665324659424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,34 +228,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-70637918912760239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Branching
-  m_EditorClassIdentifier: 
-  Path: event:/Branching
-  Guid:
-    Data1: 1369712002
-    Data2: 1255461636
-    Data3: 679771047
-    Data4: -1676941144
-  Banks:
-  - {fileID: 4873049853332795195}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -1206982968729462525}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 323159
 --- !u!114 &-46423437544664877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,21 +297,21 @@ MonoBehaviour:
   - {fileID: 4873049853332795195}
   EditorEvents:
   - {fileID: -5112225449538666179}
-  - {fileID: -70637918912760239}
   - {fileID: 1661306233556839176}
+  - {fileID: 5525915197586940581}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4873049853332795195}
   StringsBanks:
   - {fileID: 218057970841314867}
   cacheVersion: 131857
-  cacheTime: 639003554166947529
+  cacheTime: 639004785873075114
   SerializableEventsDict:
   - key: event:/Crossfade
     index: 0
-  - key: event:/Branching
-    index: 1
   - key: event:/Layering
+    index: 1
+  - key: event:/BranchingLitvar
     index: 2
 --- !u!114 &218057970841314867
 MonoBehaviour:
@@ -382,10 +328,10 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639003554166947529
+  lastModified: 639004785873075114
   FileSizes:
   - Name: 
-    Value: 1114
+    Value: 1162
   Exists: 1
 --- !u!114 &269602792570429276
 MonoBehaviour:
@@ -593,6 +539,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2931309064937282305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BranchingLitvar/LitvarState
+  m_EditorClassIdentifier: 
+  Name: LitvarState
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 232417030
+    data2: 1258655245
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Sad
+  - Epic
+  Exists: 1
 --- !u!114 &3040393096037235069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,9 +732,37 @@ MonoBehaviour:
   Path: Assets/AudioBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639003554166889310
+  lastModified: 639004785873055076
   FileSizes: []
   Exists: 1
+--- !u!114 &5525915197586940581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BranchingLitvar
+  m_EditorClassIdentifier: 
+  Path: event:/BranchingLitvar
+  Guid:
+    Data1: -1808891527
+    Data2: 1115970305
+    Data3: -1644921953
+    Data4: -991952350
+  Banks:
+  - {fileID: 4873049853332795195}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 2931309064937282305}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 109736
 --- !u!114 &5622253740206327820
 MonoBehaviour:
   m_ObjectHideFlags: 0
