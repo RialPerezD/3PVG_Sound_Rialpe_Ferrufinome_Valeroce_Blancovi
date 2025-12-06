@@ -7,6 +7,8 @@ public class EpicTrigger : MonoBehaviour
 {
     [Header("FMOD")] public EventReference musicEvent;
 
+    [Header("FMOD Settings")]
+    public string globalParamName = "AMB_DUCK";
     private EventInstance _musicInstance;
     
     private const string StateParameter = "LitvarState";
@@ -23,11 +25,13 @@ public class EpicTrigger : MonoBehaviour
     {
         // Epic Music
         _musicInstance.setParameterByNameWithLabel(StateParameter, StateEpic);
+        RuntimeManager.StudioSystem.setParameterByName(globalParamName, 1.0f);
     }
 
     private void OnTriggerExit(Collider other)
     {
         // Sad Music
         _musicInstance.setParameterByNameWithLabel(StateParameter, StateSad);
+        RuntimeManager.StudioSystem.setParameterByName(globalParamName, 0.0f);
     }
 }

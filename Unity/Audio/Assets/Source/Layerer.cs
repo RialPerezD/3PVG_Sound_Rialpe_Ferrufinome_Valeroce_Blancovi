@@ -30,12 +30,12 @@ public class Layerer : MonoBehaviour
         _musicInstance.start();
         
         for (int i = 0; i < layers.Length; i++) {
-            //layers[i].currentValue = 0.0f;
-            layers[i].targetValue = 0.0f;
-            _layerStates.Add(layers[i].parameterLabel, false);
+            
+            layers[i].currentValue = 0.0f;
+            layers[i].targetValue = 1.0f;
+            _layerStates.Add(layers[i].parameterLabel, false); // This is only if I want to change values via buttons.
         }
-        
-        
+        layers[1].targetValue = 0.0f;
     }
     // Update is called once per frame
     void Update()
@@ -52,7 +52,7 @@ public class Layerer : MonoBehaviour
             }
         }
 
-        if (layers.Length > 0) {
+        /*if (layers.Length > 0) {
             if (Input.GetKeyDown(KeyCode.Alpha1)) {
                 ToggleLayer(layers[0].parameterLabel);
             }
@@ -65,20 +65,19 @@ public class Layerer : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4)) {
                 ToggleLayer(layers[3].parameterLabel);
             }
-        }
+        }*/
     }
 
     #region LayerToggling
 
     public void ToggleLayer(string layerName) {
-        if (_layerStates.ContainsKey(layerName))
-        {
-            _layerStates[layerName] = !_layerStates[layerName];
-            float newValue = _layerStates[layerName] ? 1.0f : 0.0f;
-            
-            _musicInstance.setParameterByName(layerName, newValue);
-        } else {
-            Debug.LogError($"Parameter '{layerName}' not found in layer states.");
+        for (int i = 0; i < layers.Length; i++) {
+            if (layers[i].parameterLabel != layerName) continue;
+
+            Layer layer = layers[i];
+            layer.targetValue = (layer.targetValue == 0.0f) ? 1.0f : 0.0f;
+            layers[i] = layer;
+            return;
         }
     }
     
@@ -90,6 +89,5 @@ public class Layerer : MonoBehaviour
             }
         }
     }
-
     #endregion
 }

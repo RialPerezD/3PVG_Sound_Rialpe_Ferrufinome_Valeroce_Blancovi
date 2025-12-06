@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{103b1b71-8dd7-4cfa-b472-cc202c7a22f5}">
+		<property name="name">
+			<value>AMB_DUCK</value>
+		</property>
+		<relationship name="folder">
+			<destination>{56a6c60a-199f-4758-a053-a521835a12de}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{33404055-3751-49f6-bd04-e7df4318805d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{33404055-3751-49f6-bd04-e7df4318805d}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="velocity">
+			<value>1</value>
+		</property>
+	</object>
+</objects>

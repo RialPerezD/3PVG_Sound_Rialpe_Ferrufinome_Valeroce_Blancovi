@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cc1f3213e762443921171a46a869fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   sensitivity: 200
   camera: {fileID: 923615589}
 --- !u!143 &135793942
@@ -26170,6 +26170,89 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 436916, guid: 287711fb95cdc004b814e53a055b4b1e, type: 3}
   m_PrefabInstance: {fileID: 941772555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1964982055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1964982058}
+  - component: {fileID: 1964982057}
+  - component: {fileID: 1964982056}
+  m_Layer: 0
+  m_Name: AmbienceLayerer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1964982056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964982055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bc570d85107d34fa80c931effbd624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layersController: {fileID: 1964982057}
+  layerNames:
+  - HOWLING_WIND_LOOP
+  timeOffRange: {x: 10, y: 15}
+  timeOnRange: {x: 8, y: 10}
+--- !u!114 &1964982057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964982055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea0760725da0584280541046afa59b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicEvent:
+    Guid:
+      Data1: 2141953544
+      Data2: 1248887320
+      Data3: 1234204832
+      Data4: 327235749
+    Path: event:/AmbienceLayering
+  layers:
+  - name: Waves
+    parameterLabel: WAVES_LOOP
+    currentValue: 0
+    targetValue: 0
+  - name: HowlingWind
+    parameterLabel: HOWLING_WIND_LOOP
+    currentValue: 0
+    targetValue: 0
+  - name: BrownNoise
+    parameterLabel: BROWN_NOISE_LOOP
+    currentValue: 0
+    targetValue: 0
+  fadeSpeed: 3
+--- !u!4 &1964982058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964982055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -47.63803, y: -24.226892, z: 135.53821}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1965242146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29420,6 +29503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EpicTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 6432767943001376285, guid: bc486d0c850b44a4aa151426f9701fe1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29437,3 +29524,4 @@ SceneRoots:
   - {fileID: 1749145728}
   - {fileID: 135793940}
   - {fileID: 5613925601123770614}
+  - {fileID: 1964982058}

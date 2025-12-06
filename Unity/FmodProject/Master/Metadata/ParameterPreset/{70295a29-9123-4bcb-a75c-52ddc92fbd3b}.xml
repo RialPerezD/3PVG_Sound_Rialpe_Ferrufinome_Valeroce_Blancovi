@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{70295a29-9123-4bcb-a75c-52ddc92fbd3b}">
+		<property name="name">
+			<value>HOWLING_WIND_LOOP</value>
+		</property>
+		<relationship name="folder">
+			<destination>{56a6c60a-199f-4758-a053-a521835a12de}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3c4e20f7-e022-4260-872e-b6c3d9294e99}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3c4e20f7-e022-4260-872e-b6c3d9294e99}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
