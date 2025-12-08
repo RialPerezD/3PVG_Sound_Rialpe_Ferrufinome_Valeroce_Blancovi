@@ -64,10 +64,59 @@ int main() {
     startNode.inputPin = nextId++;
     startNode.outputPin = nextId++;
     startNode.extraOutputPin = nextId++;
-    startNode.name = "Intro (Inicio)";
+    startNode.name = "Intro (Start)";
     startNode.audioIndex = audioManager.LoadWav("../assets/0_intro.wav");
     audioNodes.push_back(startNode);
-    ImNodes::SetNodeScreenSpacePos(startNode.id, ImVec2(100.0f, 100.0f));
+    ImNodes::SetNodeScreenSpacePos(startNode.id, ImVec2(100, 100));
+
+    auto add = [&](const char* name, const char* path, ImVec2 pos) {
+        AudioNode n;
+        n.id = nextId++;
+        n.inputPin = nextId++;
+        n.outputPin = nextId++;
+        n.extraOutputPin = nextId++;
+        n.name = name;
+        n.audioIndex = audioManager.LoadWav(path);
+        audioNodes.push_back(n);
+        ImNodes::SetNodeScreenSpacePos(n.id, pos);
+        return n.id;
+        };
+
+    int firstPiano = add("First Piano", "../assets/1_firstPiano.wav", ImVec2(350, 100));
+    int ding1 = add("Ding ding", "../assets/2_dingDing.wav", ImVec2(600, 100));
+    int crazy = add("This is crazy frog", "../assets/3_thisIsCrazyFrog.wav", ImVec2(850, 100));
+    int body = add("Body song", "../assets/4_mainSong.wav", ImVec2(1100, 100));
+    int ding2 = add("Ding ding", "../assets/2_dingDing.wav", ImVec2(600, 350));
+    int motillo1 = add("Motillo", "../assets/5_motillo.wav", ImVec2(900, 350));
+    int motillo2 = add("Motillo", "../assets/5_motillo.wav", ImVec2(900, 450));
+
+    auto pin = [&](int nodeId, bool input, bool extra) {
+        for (auto& n : audioNodes)
+            if (n.id == nodeId)
+                return input ? n.inputPin : (extra ? n.extraOutputPin : n.outputPin);
+        return -1;
+        };
+
+    auto link = [&](int a, int b) {
+        links.push_back({ nextLinkId++, a, b });
+        };
+
+    link(pin(startNode.id, false, false), pin(firstPiano, true, false));
+    link(pin(startNode.id, false, true), pin(firstPiano, true, false));
+    link(pin(firstPiano, false, false), pin(ding1, true, false));
+    link(pin(firstPiano, false, true), pin(ding1, true, false));
+    link(pin(ding1, false, false), pin(crazy, true, false));
+    link(pin(ding1, false, true), pin(crazy, true, false));
+    link(pin(crazy, false, false), pin(body, true, false));
+    link(pin(crazy, false, true), pin(ding2, true, false));
+    link(pin(body, false, false), pin(ding2, true, false));
+    link(pin(body, false, true), pin(ding2, true, false));
+    link(pin(ding2, false, false), pin(crazy, true, false));
+    link(pin(ding2, false, true), pin(motillo1, true, false));
+    link(pin(motillo1, false, false), pin(ding2, true, false));
+    link(pin(motillo1, false, true), pin(motillo2, true, false));
+    link(pin(motillo2, false, false), pin(ding2, true, false));
+    link(pin(motillo2, false, true), pin(motillo1, true, false));
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
@@ -182,7 +231,7 @@ int main() {
             }
 
             ImGui::SameLine();
-            std::string deleteId = "Eliminar##" + std::to_string(n.id);
+            std::string deleteId = "Delete##" + std::to_string(n.id);
             if (ImGui::Button(deleteId.c_str())) {
                 if (n.id == currentPlayingNodeId && n.audioIndex != -1) {
                     audioManager.Stop(n.audioIndex);
