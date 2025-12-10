@@ -1,6 +1,6 @@
-En este proyecto se esta utilizando las librerias de sonido OpenAl y SoftAl junto con las librerias graficas glfw3, imgui e imnodes.
+In this project, the OpenAL and SoftAL audio libraries are used, together with the graphical libraries GLFW3, ImGui, and ImNodes.
 
-En este proyecto es un demostrador que contiene branching.
+This project serves as a demonstrator that includes branching functionality.
 
-Compilar este proyecto se debe ejecutar el script ./tools/genProyect.bat
-Para ejecutar el proyecto se debe abrir la solucion ./build/GameGustavo.sln y poner como startup project "Tool"
+To compile the project, run the script ./tools/genProyect.bat.
+To launch the project, open the solution located at ./build/GameGustavo.sln and set "Tool" as the startup project.
