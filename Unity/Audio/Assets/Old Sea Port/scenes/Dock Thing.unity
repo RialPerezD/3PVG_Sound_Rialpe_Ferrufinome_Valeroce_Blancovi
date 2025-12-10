@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.10072447, g: 0.13515687, b: 0.16911763, a: 1}
-  m_FogMode: 2
-  m_FogDensity: 0.05
+  m_FogColor: {r: 0.10808829, g: 0.14068604, b: 0.17735851, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.06
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 50
   m_AmbientSkyColor: {r: 0.35588235, g: 0.5, b: 0.5852941, a: 0.75}
   m_AmbientEquatorColor: {r: 0.35588235, g: 0.5, b: 0.5852941, a: 0.75}
   m_AmbientGroundColor: {r: 0.35588235, g: 0.5, b: 0.5852941, a: 0.75}
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: 931ed40db9820e84fab169155396a755, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 931ed40db9820e84fab169155396a755, type: 2}
   m_LightingSettings: {fileID: 2060862867}
 --- !u!196 &5
 NavMeshSettings:
@@ -12249,6 +12249,7 @@ GameObject:
   - component: {fileID: 923615586}
   - component: {fileID: 923615590}
   - component: {fileID: 923615574}
+  - component: {fileID: 923615591}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -12366,6 +12367,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 0}
+--- !u!114 &923615591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923615573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 923615589}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 0
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!4 &928912699 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 431894, guid: cc1d1788a682d5048af84a0fc6178911, type: 3}
@@ -19465,8 +19526,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1396610705}
+  - component: {fileID: 1396610706}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PostProcess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19481,12 +19543,29 @@ Transform:
   m_GameObject: {fileID: 1396610704}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0252982, y: 5.959779, z: 47.3942}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1396610706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396610704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: c4272b84e8d2077489f21b1669082645, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1001 &1402107687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29822,6 +29901,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1396610705}
   - {fileID: 1610145833}
   - {fileID: 1721720567}
   - {fileID: 52880495}
@@ -29832,4 +29912,3 @@ SceneRoots:
   - {fileID: 1964982058}
   - {fileID: 1513735144}
   - {fileID: 2131915674}
-  - {fileID: 1396610705}
