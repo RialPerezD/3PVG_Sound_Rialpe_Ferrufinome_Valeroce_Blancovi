@@ -2,46 +2,100 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-/// <summary>
-/// Manages the smooth crossfade transition between two music states using FMOD.
-/// </summary>
-/// <remarks>
-/// This component requires the assigned FMOD Event to have a parameter named "Blend".
-/// The parameter controls the mix: 0.0f for Song A and 1.0f for Song B.
-/// </remarks>
+[RequireComponent(typeof(BoxCollider))]
 public class MusicCrossFader : MonoBehaviour
 {
     /// <summary>
-    /// The name of the parameter in FMOD Studio that controls the blend.
+    /// Name of the FMOD parameter that controls the music blend.
     /// </summary>
-    private const string BlendParameter = "Blend";
+    private const string BlendParameter = "Mezcla";
 
     /// <summary>
-    /// Reference to the specific FMOD music event.
+    /// FMOD event reference used for the music instance.
     /// </summary>
-    [Header("FMOD")]
+    [Header("FMOD Settings")]
     public EventReference musicEvent;
 
     /// <summary>
-    /// The target value for the blend parameter.
-    /// <list type="bullet">
-    /// <item><description>0.0f = Song A</description></item>
-    /// <item><description>1.0f = Song B</description></item>
-    /// </list>
+    /// Target blend value (0–1) toward which the system transitions.
     /// </summary>
-    [Header("Fade blend")]
+    [Header("Fade Settings")]
     [Range(0f, 1f)]
     public float targetBlend = 0f;
 
     /// <summary>
-    /// The speed at which the transition between songs occurs.
-    /// A higher value results in a faster transition.
+    /// Speed at which the blend transitions toward the target value.
     /// </summary>
-    [Tooltip("How fast the fade's blend goes")]
-    public float transitionSpeed = 2.0f;
+    [Tooltip("Transition Speed")]
+    public float transitionSpeed = 1.0f;
 
     /// <summary>
-    /// Sets the blend target to 0 (Song A).
+    /// Optional reference to an EpicTrigger script to adjust its volume based on the blend value.
+    /// </summary>
+    [Header("References")]
+    public EpicTrigger epicTriggerScript;
+
+    /// <summary>
+    /// Optional reference to a Layerer script to adjust its volume based on the blend value.
+    /// </summary>
+    public Layerer layererScript;
+
+    /// <summary>
+    /// Runtime FMOD event instance controlling the music.
+    /// </summary>
+    private EventInstance musicInstance;
+
+    /// <summary>
+    /// Current blend value (0–1), interpolated toward <see cref="targetBlend"/>.
+    /// </summary>
+    private float currentBlend = 0.0f;
+
+    /// <summary>
+    /// Initializes the FMOD music instance and sets initial parameter values.
+    /// </summary>
+    private void Start()
+    {
+        // Create and start FMOD event instance
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
+        musicInstance.start();
+
+        // Initialize blend and volume
+        musicInstance.setParameterByName(BlendParameter, 0f);
+        musicInstance.setVolume(0f);
+
+        currentBlend = 0f;
+        targetBlend = 0f;
+    }
+
+    /// <summary>
+    /// Updates the blend transition and handles input-based debug switching.
+    /// </summary>
+    private void Update()
+    {
+        // Smooth blend transition
+        if (Mathf.Abs(currentBlend - targetBlend) > 0.001f)
+        {
+            currentBlend = Mathf.MoveTowards(currentBlend, targetBlend, transitionSpeed * Time.deltaTime);
+
+            // Apply updated blend value to FMOD
+            musicInstance.setParameterByName(BlendParameter, currentBlend);
+            musicInstance.setVolume(currentBlend);
+
+            // Update linked systems inversely
+            if (epicTriggerScript)
+                epicTriggerScript.SetVolume(1f - currentBlend);
+
+            if (layererScript)
+                layererScript.SetVolume(1f - currentBlend);
+        }
+
+        // Manual debug controls
+        if (Input.GetKeyDown(KeyCode.I)) SwapToA();
+        if (Input.GetKeyDown(KeyCode.O)) SwapToB();
+    }
+
+    /// <summary>
+    /// Switches blend toward music A (sets target blend to 0).
     /// </summary>
     public void SwapToA()
     {
@@ -49,7 +103,7 @@ public class MusicCrossFader : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the blend target to 1 (Song B).
+    /// Switches blend toward music B (sets target blend to 1).
     /// </summary>
     public void SwapToB()
     {
@@ -57,48 +111,25 @@ public class MusicCrossFader : MonoBehaviour
     }
 
     /// <summary>
-    /// The runtime instance of the FMOD event.
+    /// Automatically swaps to B when an object enters the trigger zone.
     /// </summary>
-    private EventInstance musicInstance;
-
-    /// <summary>
-    /// The current value of the blend parameter (will interpolate towards <see cref="targetBlend"/>).
-    /// </summary>
-    private float currentBlend = 0.0f;
-
-    /// <summary>
-    /// Initializes the FMOD instance and starts playback.
-    /// </summary>
-    private void Start()
+    /// <param name="other">Collider entering the trigger.</param>
+    private void OnTriggerEnter(Collider other)
     {
-        // Create and initialize music's instance
-        musicInstance = RuntimeManager.CreateInstance(musicEvent);
-        musicInstance.start();
-
-        // Initialize blend parameter to 0 (Song A)
-        musicInstance.setParameterByName(BlendParameter, 0f);
+        SwapToB();
     }
 
     /// <summary>
-    /// Updates the blend interpolation and handles debug input.
+    /// Automatically swaps back to A when an object exits the trigger zone.
     /// </summary>
-    private void Update()
+    /// <param name="other">Collider exiting the trigger.</param>
+    private void OnTriggerExit(Collider other)
     {
-        // Linear interpolation (Lerp) of the blend value
-        if (Mathf.Abs(currentBlend - targetBlend) > 0.001f)
-        {
-            currentBlend = Mathf.MoveTowards(currentBlend, targetBlend, transitionSpeed * Time.deltaTime);
-
-            // Set FMOD parameter
-            musicInstance.setParameterByName(BlendParameter, currentBlend);
-        }
-
-        if (Input.GetKeyDown(KeyCode.A)) SwapToA();
-        if (Input.GetKeyDown(KeyCode.B)) SwapToB();
+        SwapToA();
     }
 
     /// <summary>
-    /// Stops and releases the FMOD instance when the object is destroyed to prevent memory leaks.
+    /// Ensures FMOD instance is properly stopped and released when this object is destroyed.
     /// </summary>
     private void OnDestroy()
     {
