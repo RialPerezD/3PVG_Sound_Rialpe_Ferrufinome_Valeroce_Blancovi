@@ -114,8 +114,8 @@ int main() {
     startNode.inputPin = nextId++;
     startNode.outputPin = nextId++;
     startNode.extraOutputPin = nextId++;
-    startNode.name = "Intro (Start)";
-    startNode.audioIndex = audioManager.LoadWav("../assets/0_intro.wav");
+    startNode.name = "Intro (Start A1)";
+    startNode.audioIndex = audioManager.LoadWav("../assets/A-01.wav");
     audioNodes.push_back(startNode);
     ImNodes::SetNodeScreenSpacePos(startNode.id, ImVec2(100, 100));
 
@@ -134,13 +134,15 @@ int main() {
         };
 
     // Create the remaining hardcoded initial nodes
-    int firstPiano = add("First Piano", "../assets/1_firstPiano.wav", ImVec2(350, 100));
-    int ding1 = add("Ding ding", "../assets/2_dingDing.wav", ImVec2(600, 100));
-    int crazy = add("This is crazy frog", "../assets/3_thisIsCrazyFrog.wav", ImVec2(850, 100));
-    int body = add("Body song", "../assets/4_mainSong.wav", ImVec2(1100, 100));
-    int ding2 = add("Ding ding", "../assets/2_dingDing.wav", ImVec2(600, 350));
-    int motillo1 = add("Motillo", "../assets/5_motillo.wav", ImVec2(900, 350));
-    int motillo2 = add("Motillo", "../assets/5_motillo.wav", ImVec2(900, 450));
+    int a2 = add("A2", "../assets/A-02.wav", ImVec2(300, 100));
+    int a3 = add("A3", "../assets/A-03.wav", ImVec2(500, 100));
+    int a4 = add("A4", "../assets/A-04.wav", ImVec2(700, 100));
+    int ab = add("AB", "../assets/AB-01.wav", ImVec2(100, 250));
+    int b1 = add("B1", "../assets/B-01.wav", ImVec2(300, 500));
+    int b2 = add("B2", "../assets/B-02.wav", ImVec2(500, 500));
+    int b3 = add("B3", "../assets/B-03.wav", ImVec2(700, 500));
+    int b4 = add("B4", "../assets/B-04.wav", ImVec2(900, 500));
+    int ba = add("BA", "../assets/BA-01.wav", ImVec2(500, 250));
 
     // Helper lambda to find the pin ID associated with a given node ID
     auto pin = [&](int nodeId, bool input, bool extra) {
@@ -156,22 +158,26 @@ int main() {
         };
 
     // Create the hardcoded initial links defining the audio flow
-    link(pin(startNode.id, false, false), pin(firstPiano, true, false));
-    link(pin(startNode.id, false, true), pin(firstPiano, true, false));
-    link(pin(firstPiano, false, false), pin(ding1, true, false));
-    link(pin(firstPiano, false, true), pin(ding1, true, false));
-    link(pin(ding1, false, false), pin(crazy, true, false));
-    link(pin(ding1, false, true), pin(crazy, true, false));
-    link(pin(crazy, false, false), pin(body, true, false));
-    link(pin(crazy, false, true), pin(ding2, true, false));
-    link(pin(body, false, false), pin(ding2, true, false));
-    link(pin(body, false, true), pin(ding2, true, false));
-    link(pin(ding2, false, false), pin(crazy, true, false));
-    link(pin(ding2, false, true), pin(motillo1, true, false));
-    link(pin(motillo1, false, false), pin(ding2, true, false));
-    link(pin(motillo1, false, true), pin(motillo2, true, false));
-    link(pin(motillo2, false, false), pin(ding2, true, false));
-    link(pin(motillo2, false, true), pin(motillo1, true, false));
+    link(pin(startNode.id, false, false), pin(a2, true, false));
+    link(pin(startNode.id, false, true), pin(a2, true, false));
+    link(pin(a2, false, false), pin(a3, true, false));
+    link(pin(a2, false, true), pin(ab, true, false));
+    link(pin(a3, false, false), pin(a4, true, false));
+    link(pin(a3, false, true), pin(ab, true, false));
+    link(pin(a4, false, false), pin(a2, true, false));
+    link(pin(a4, false, true), pin(ab, true, false));
+    link(pin(ab, false, false), pin(a2, true, false));
+    link(pin(ab, false, true), pin(b1, true, false));
+    link(pin(b1, false, false), pin(ba, true, false));
+    link(pin(b1, false, true), pin(b2, true, false));
+    link(pin(b2, false, false), pin(ba, true, false));
+    link(pin(b2, false, true), pin(b3, true, false));
+    link(pin(b3, false, false), pin(ba, true, false));
+    link(pin(b3, false, true), pin(b4, true, false));
+    link(pin(b4, false, false), pin(ba, true, false));
+    link(pin(b4, false, true), pin(b1, true, false));
+    link(pin(ba, false, false), pin(a2, true, false));
+    link(pin(ba, false, true), pin(b1, true, false));
 
     // --- Main Rendering and Logic Loop ---
     while (!glfwWindowShouldClose(window)) {
@@ -245,12 +251,16 @@ int main() {
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("Nodos")) {
                 // Audio nodes creation menu
-                if (ImGui::MenuItem("Intro")) create_audio_node("Intro", "../assets/0_intro.wav");
-                if (ImGui::MenuItem("First Piano")) create_audio_node("First Piano", "../assets/1_firstPiano.wav");
-                if (ImGui::MenuItem("Ding ding")) create_audio_node("Ding ding", "../assets/2_dingDing.wav");
-                if (ImGui::MenuItem("This is crazy frog")) create_audio_node("This is crazy frog", "../assets/3_thisIsCrazyFrog.wav");
-                if (ImGui::MenuItem("Body song")) create_audio_node("Body song", "../assets/4_mainSong.wav");
-                if (ImGui::MenuItem("Motillo")) create_audio_node("Motillo", "../assets/5_motillo.wav");
+                if (ImGui::MenuItem("A1")) create_audio_node("A1", "../assets/A-01.wav");
+                if (ImGui::MenuItem("A2")) create_audio_node("A2", "../assets/A-02.wav");
+                if (ImGui::MenuItem("A3")) create_audio_node("A3", "../assets/A-03.wav");
+                if (ImGui::MenuItem("A4")) create_audio_node("A4", "../assets/A-04.wav");
+                if (ImGui::MenuItem("AB")) create_audio_node("AB", "../assets/AB-01.wav");
+                if (ImGui::MenuItem("B1")) create_audio_node("B1", "../assets/B-01.wav");
+                if (ImGui::MenuItem("B2")) create_audio_node("B2", "../assets/B-02.wav");
+                if (ImGui::MenuItem("B3")) create_audio_node("B3", "../assets/B-03.wav");
+                if (ImGui::MenuItem("B4")) create_audio_node("B4", "../assets/B-04.wav");
+                if (ImGui::MenuItem("BA")) create_audio_node("BA", "../assets/BA-01.wav");
 
                 // Conditional node creation menu
                 if (ImGui::MenuItem("If Node")) {
@@ -341,7 +351,48 @@ int main() {
         }
 
         // Draw Links
-        for (const auto& l : links) ImNodes::Link(l.id, l.startAttr, l.endAttr);
+        const ImVec4 active_color = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
+
+        for (const auto& l : links) {
+            bool isActiveLink = false;
+            AudioNode* startNode = nullptr;
+
+            // Find the source node by its output pins
+            for (auto& n : audioNodes) {
+                if (n.outputPin == l.startAttr || n.extraOutputPin == l.startAttr) {
+                    startNode = &n;
+                    break;
+                }
+            }
+
+            if (startNode) {
+                int selectedPin = -1;
+
+                // Determine which pin is the active path based on state/condition
+                if (startNode->name == "If Node") {
+                    selectedPin = startNode->condition ? startNode->outputPin : startNode->extraOutputPin;
+                } else {
+                    selectedPin = state ? startNode->outputPin : startNode->extraOutputPin;
+                }
+
+                // Check if the link is on the active path
+                isActiveLink = (l.startAttr == selectedPin);
+            }
+
+            // Apply color style if this link is active
+            if (isActiveLink) {
+                ImNodes::PushColorStyle(ImNodesCol_Link, ImColor(active_color));
+                ImNodes::PushColorStyle(ImNodesCol_LinkSelected, ImColor(active_color));
+            }
+
+            ImNodes::Link(l.id, l.startAttr, l.endAttr);
+
+            // Restore color style
+            if (isActiveLink) {
+                ImNodes::PopColorStyle();
+                ImNodes::PopColorStyle();
+            }
+        }
         ImNodes::EndNodeEditor();
 
         // --- Link Creation and Destruction Handling ---

@@ -150,12 +150,6 @@ void DrawSprites() {
             esat::DrawSprite(d.sprite, d.transform);
         }
     }
-    else {
-        // Only draw the background (first element) during the night if entities are hidden
-        drawableList[0].transform.x = drawableList[0].posX * tileSize;
-        drawableList[0].transform.y = drawableList[0].posY * tileSize;
-        esat::DrawSprite(drawableList[0].sprite, drawableList[0].transform);
-    }
 
     // Always draw the player
     player.transform.x = player.posX * tileSize;
