@@ -5,7 +5,12 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 public class LoopableAmbiance : MonoBehaviour
 {
-    [Header("FMOD")] public EventReference soundEvent;
+    [Header("FMOD")]
+    /** <summary>
+     * The FMOD event reference for the ambiance sound to be played.
+     * </summary>
+     */
+    public EventReference soundEvent;
     
     private EventInstance _soundInstance;
 

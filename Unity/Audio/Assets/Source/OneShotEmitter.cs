@@ -6,14 +6,34 @@ using System.Collections;
 
 public class OneShotEmitter : MonoBehaviour
 {
-    [Header("FMOD")] public EventReference soundEvent;
+    [Header("FMOD")]
+    /** <summary>
+     * The FMOD event reference for the one-shot sound to be played.
+     * </summary>
+     */
+    public EventReference soundEvent;
     [Header("FMOD Settings")]
     
     private EventInstance _soundInstance;
 
+    /**
+     * <summary>
+     * The range of time intervals (in seconds) between one-shot sound plays.
+     * </summary>
+     */
     public Vector2 timeRange = new Vector2(3.0f, 7.0f);
     
+    /**
+     * <summary>
+     * The minimum pitch variation for the one-shot sound.
+     * </summary>
+     */
     public float minPitch = 0.95f;
+    /**
+     * <summary>
+     * The maximum pitch variation for the one-shot sound.
+     * </summary>
+     */
     public float maxPitch = 1.05f;
     
     

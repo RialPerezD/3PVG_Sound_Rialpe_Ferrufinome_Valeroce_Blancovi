@@ -6,24 +6,69 @@ using System.Collections.Generic;
 public class Layerer : MonoBehaviour
 {
     [Header("FMOD")]
+    /** <summary>
+     * The FMOD event reference for the music event to be layered.
+     * </summary>
+     */
     public EventReference musicEvent;
 
+    /** <summary>
+     * The FMOD event instance for the music event.
+     * </summary>
+     */
     public EventInstance _musicInstance;
 
+    /** <summary>
+     * Represents a music layer with its name, parameter label, current value, and target value.
+     * </summary>
+     */
     [System.Serializable]
     public struct Layer
     {
+        /** <summary>
+         * The name of the music layer.
+         * </summary>
+         */
         public string name;
+        /** <summary>
+         * The FMOD parameter label associated with this layer.
+         * </summary>
+         */
         public string parameterLabel;
+        /** <summary>
+         * The current value of the layer's parameter.
+         * </summary>
+         */
         [HideInInspector] public float currentValue;
+        /** <summary>
+         * The target value for the layer's parameter.
+         * </summary>
+         */
         [HideInInspector] public float targetValue;
     }
 
+    /** <summary>
+     * An array of music layers to be managed.
+     * </summary>
+     */
     public Layer[] layers;
+    /** <summary>
+     * The speed at which layers fade in and out.
+     * </summary>
+     */
     public float fadeSpeed = 3.0f;
 
     #region LayerToggling
 
+    /**
+     * <summary>
+     * Toggles the specified music layer on or off.
+     * </summary>
+     * 
+     * <param name = "layerName">
+     * The name of the layer to toggle.
+     * </param>
+     */
     public void ToggleLayer(string layerName)
     {
         for (int i = 0; i < layers.Length; i++)
