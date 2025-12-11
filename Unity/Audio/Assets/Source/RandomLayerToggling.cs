@@ -6,8 +6,20 @@ public class RandomLayerToggling : MonoBehaviour
     [Header("Refrences")] public Layerer layersController;
 
     [Header("Settings")] 
+    /** <summary>
+     * The names of the layers to be toggled randomly.
+     * </summary>
+     */
     public string[] layerNames;
+    /** <summary>
+     * The range of time intervals (in seconds) for which a layer stays off.
+     * </summary>
+     */
     public Vector2 timeOffRange = new Vector2(10.0f, 15.0f);
+    /** <summary>
+     * The range of time intervals (in seconds) for which a layer stays on.
+     * </summary>
+     */
     public Vector2 timeOnRange = new Vector2(8.0f, 10.0f);
     
     
