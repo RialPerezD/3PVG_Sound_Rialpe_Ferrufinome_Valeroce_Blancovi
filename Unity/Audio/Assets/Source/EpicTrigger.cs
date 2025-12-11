@@ -2,15 +2,28 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
+/// <summary>
+///   <para>Trigger that implements branching (changes state when the player enters and exits).</para>
+/// </summary>
 [RequireComponent(typeof(BoxCollider))]
 public class EpicTrigger : MonoBehaviour
 {
+    /// <summary>
+    ///   <para>Instance of the event created in FMOD.</para>
+    /// </summary>
     [Header("FMOD")]
     public EventReference musicEvent;
 
+    /// <summary>
+    ///   <para>FMOD parameter name to decrease the volume of ambience sounds.</para>
+    /// </summary>
     [Header("FMOD Settings")] 
     public string globalParamName = "AMB_DUCK";
 
+    /// <summary>
+    ///   <para>Sets the volume of the branching event.</para>
+    /// </summary>
+    /// <param name="volume">Value between 0 and 1 that determines the volume of the branching event.</param>
     public void SetVolume(float volume)
     {
         _musicInstance.setVolume(volume);

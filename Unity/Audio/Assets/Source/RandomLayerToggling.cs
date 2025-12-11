@@ -11,8 +11,7 @@ public class RandomLayerToggling : MonoBehaviour
     public Vector2 timeOnRange = new Vector2(8.0f, 10.0f);
     
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         StartCoroutine(RandomToggleRoutine());
     }
