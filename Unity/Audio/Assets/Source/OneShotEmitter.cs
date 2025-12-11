@@ -23,6 +23,9 @@ public class OneShotEmitter : MonoBehaviour
 
     }
 
+    /**
+     * @brief Coroutine that plays the one-shot sound at random intervals.
+     */
     private IEnumerator PlayRoutine()
     {
         while (true)
@@ -34,6 +37,9 @@ public class OneShotEmitter : MonoBehaviour
         }
     }
     
+    /**
+     * @brief Plays the one-shot sound in 3D space with random pitch variation.
+     */
     private void PlayOneShot3D()
     {
         _soundInstance =  RuntimeManager.CreateInstance(soundEvent);

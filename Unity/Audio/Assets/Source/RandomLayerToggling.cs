@@ -17,6 +17,9 @@ public class RandomLayerToggling : MonoBehaviour
         StartCoroutine(RandomToggleRoutine());
     }
 
+    /**
+     * @brief Coroutine that randomly toggles a specified layer on and off at random intervals.
+     */
     IEnumerator RandomToggleRoutine()
     {
         while (true)
